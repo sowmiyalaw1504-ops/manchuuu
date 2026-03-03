@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For My Pondatii ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  text-align:center;
+  background:linear-gradient(to right,#ff9a9e,#fad0c4);
+  overflow:hidden;
+  transition:0.5s;
+}
+.page{
+  display:none;
+  padding:60px 25px;
+  min-height:100vh;
+}
+p{
+  font-size:22px;
+  line-height:1.8;
+}
+button{
+  padding:12px 25px;
+  font-size:18px;
+  border:none;
+  border-radius:25px;
+  margin:15px;
+  cursor:pointer;
+}
+.next{background:#ff4e88;color:white;}
+.angry{background:#333;color:white;}
+.happy{background:#ff4e88;color:white;}
+.heart{
+  position:fixed;
+  color:red;
+  animation:fall 3s linear infinite;
+}
+@keyframes fall{
+  0%{top:-10%;opacity:1;}
+  100%{top:100%;opacity:0;}
+}
+.blush{
+  font-size:70px;
+  animation:pop 1s infinite alternate;
+}
+@keyframes pop{
+  from{transform:scale(1);}
+  to{transform:scale(1.1);}
+}
+</style>
+</head>
+<body>
+
+<audio id="bgm" loop>
+  <source src="nee-kavithaigala.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let currentPage=1;
+
+function showPage(num){
+  document.querySelectorAll(".page").forEach(p=>p.style.display="none");
+  document.getElementById("page"+num).style.display="block";
+  currentPage=num;
+}
+
+function next(){
+  if(currentPage<14){
+    showPage(currentPage+1);
+  }
+}
+
+function startMusic(){
+  const music=document.getElementById("bgm");
+  music.volume=0.3;
+  music.play();
+}
+
+function angry(){
+  showPage(14);
+}
+
+function forgive(){
+  const music=document.getElementById("bgm");
+  music.volume=1.0;
+  showPage(15);
+  setInterval(createHeart,300);
+}
+
+function createHeart(){
+  const heart=document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),3000);
+}
+
+window.onload=function(){showPage(1);}
+</script>
+
+<!-- PAGES -->
+
+<div class="page" id="page1">
+<h1>😔 Naa Thappu Panniten</h1>
+<p>Konjam time eduthu idha full ah paaru…  
+Indha time naan defend panna vara la.</p>
+<button class="next" onclick="startMusic(); next()">Next</button>
+</div>
+
+<div class="page" id="page2">
+<p>Unaku already pudikala nu therinjirundhum  
+naan photo eduthu status poten…</p>
+<button class="next" onclick="next()">Next</button>
+</div>
+
+<div class="page" id="page3">
+<p>Antha ponnu en ex illa di…  
+Munnadiye ex. Ippo just bestie dhaan.  
+Aana unaku hurt aagiradhu naan purinjukala.</p>
+<button class="next" onclick="next()">Next</button>
+</div>
+
+<div class="page" id="page4">
+<p>Un kovam la jealousy illa…  
+Adhu en mela unaku evlo importance iruku nu kaatum.</p>
+<button class="next" onclick="next()">Next</button>
+</div>
+
+<div class="page" id="page5">
+<p>Un silence dhaan enaku bayama irukum…  
+Un sirippu dhaan enaku santhosham.</p>
+<button class="next" onclick="next()">Next</button>
+</div>
+
+<div class="page" id="page6">
+<p>Unaku insecure feel panna vaika maaten.  
+Adhu en responsibility.</p>
+<button class="next" onclick="next()">Next</button>
+</div>
+
+<div class="page" id="page7">
+<p>Un possessiveness enaku pidikum di…  
+Yen na adhu enna lose panna bayapadardhu.</p>
+<button class="next" onclick="next()">Next</button>
+</div>
+
+<div class="page" id="page8">
+<p>Nee dhaan en world.  
+Nee dhaan en priority.  
+Idhu words illa… decision.</p>
+<button class="next" onclick="next()">Next</button>
+</div>
+
+<div class="page" id="page9">
+<p>Inime unaku uncomfortable aagura edhavadhu  
+naan panna maaten.</p>
+<button class="next" onclick="next()">Next</button>
+</div>
+
+<div class="page" id="page10">
+<p>Trust build panna time eduthaalum  
+naan ready.</p>
+<button class="next" onclick="next()">Next</button>
+</div>
+
+<div class="page" id="page11">
+<p>Un heart la naan permanent ah irukanum…  
+Temporary a iruka vara la.</p>
+<button class="next" onclick="next()">Next</button>
+</div>
+
+<div class="page" id="page12">
+<p>Nee kovathula irundhaalum  
+nee en pondatii dhaan.</p>
+<button class="next" onclick="next()">Next</button>
+</div>
+
+<div class="page" id="page13">
+<h2>Ippo sollu…</h2>
+<button class="happy" onclick="forgive()">😊 Parava Illa</button>
+<button class="angry" onclick="angry()">😡 Innum Kovam</button>
+</div>
+
+<div class="page" id="page14">
+<p>😔 Seri… naan wait panren.  
+Un kovam theerum varaikum naan inga dhaan.</p>
+<button class="next" onclick="showPage(13)">Back</button>
+</div>
+
+<div class="page" id="page15">
+<h1>💖 Ithu dhaan en pondatii 💖</h1>
+<p>Un possessiveness enaku pidikum…  
+Ana unaku insecure feel panna vaika maaten.</p>
+<p>Love Youuuu ❤️</p>
+<div class="blush">🥰</div>
+</div>
+
+</body>
+</html>
